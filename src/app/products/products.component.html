@@ -1,0 +1,91 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- Barra promocional -->
+<div class="top-promo-bar">
+  <p>Envíos gratis a partir de $80.000</p>
+</div>
+
+<div class="products-container">
+  <!-- Logo -->
+  <a routerLink="/products" class="logo-link">
+    <img src="Logo_Rari_Store.png" alt="Logo de la tienda" class="header-logo">
+  </a>
+
+  <!-- Header -->
+  <div class="header">
+    <h1 class="title">Rari-Store</h1>
+  
+    <!-- Buscador -->
+    <div class="search-container">
+      <div class="search-box">
+        <input 
+          type="text" 
+          [(ngModel)]="searchTerm" 
+          (input)="onSearchInput()"
+          (keyup.enter)="onSearch()"
+          placeholder="Buscar productos..."
+          class="search-input"
+        >
+        <button (click)="onSearch()" class="search-btn">
+          <i class="material-icons">search</i>
+        </button>
+        <button (click)="clearSearch()" class="clear-btn" *ngIf="searchTerm">
+          <i class="material-icons">close</i>   
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Cargando productos...</p>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+    <button (click)="loadProducts()" class="retry-btn">Reintentar</button>
+  </div>
+
+  <!-- Productos -->
+  <div *ngIf="!loading && !error" class="products-grid">
+    <div *ngFor="let product of filteredProducts" class="product-card">
+      <div class="image-container">
+        <img [src]="product.thumbnail" [alt]="product.title" class="product-image">
+      </div>
+      
+      <div class="product-info">
+        <div class="category">{{ product.category }}</div>
+        <h3 class="product-title">{{ product.title }}</h3>
+        <div class="price-container">
+          <span class="price">{{ formatPrice(product.price) }}</span>
+        </div>
+      </div>
+      
+      <div class="card-actions">
+        <button class="btn btn-primary">Ver Detalles</button>
+        <button class="btn btn-secondary">Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón Cargar Más -->
+  <div *ngIf="!loading && !error && canLoadMore()" class="load-more-container">
+    <button 
+      (click)="loadMoreProducts()" 
+      class="btn btn-load-more"
+      [disabled]="loadingMore">
+      <span *ngIf="!loadingMore">Cargar Más</span>
+      <span *ngIf="loadingMore">Cargando...</span>
+    </button>
+  </div>
+
+  <!-- No results -->
+  <div *ngIf="!loading && !error && filteredProducts.length === 0" class="no-results">
+    <div class="no-results-icon">📦</div>
+    <h3>No se encontraron productos</h3>
+    <p>Intenta con otros términos de búsqueda</p>
+    <button (click)="clearSearch()" class="btn btn-primary">Ver todos los productos</button>
+  </div>
+</div>
