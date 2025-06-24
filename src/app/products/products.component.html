@@ -1,9 +1,21 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Playfair+Display:wght@700&display=swap"
+  rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 <!-- Barra promocional -->
 <div class="top-promo-bar">
   <p>Envíos gratis a partir de $80.000</p>
 </div>
+<!-- Redes sociales -->
+<div class="social-icons">
+  <button class="social-btn"><i class="fab fa-facebook-f"></i></button>
+  <button class="social-btn"><i class="fab fa-instagram"></i></button>
+  <button class="social-btn"><i class="fab fa-whatsapp"></i></button>
+
+</div>
+
 
 <div class="products-container">
   <!-- Logo -->
@@ -13,24 +25,22 @@
 
   <!-- Header -->
   <div class="header">
-    <h1 class="title">Rari-Store</h1>
-  
+    <div class="store-branding">
+      <h1 class="title">Rari-Store</h1>
+      <p class="subtitle">The Everything Market</p>
+    </div>
+
+
     <!-- Buscador -->
     <div class="search-container">
       <div class="search-box">
-        <input 
-          type="text" 
-          [(ngModel)]="searchTerm" 
-          (input)="onSearchInput()"
-          (keyup.enter)="onSearch()"
-          placeholder="Buscar productos..."
-          class="search-input"
-        >
+        <input type="text" [(ngModel)]="searchTerm" (input)="onSearchInput()" (keyup.enter)="onSearch()"
+          placeholder="Buscar productos..." class="search-input">
         <button (click)="onSearch()" class="search-btn">
           <i class="material-icons">search</i>
         </button>
         <button (click)="clearSearch()" class="clear-btn" *ngIf="searchTerm">
-          <i class="material-icons">close</i>   
+          <i class="material-icons">close</i>
         </button>
       </div>
     </div>
@@ -54,7 +64,7 @@
       <div class="image-container">
         <img [src]="product.thumbnail" [alt]="product.title" class="product-image">
       </div>
-      
+
       <div class="product-info">
         <div class="category">{{ product.category }}</div>
         <h3 class="product-title">{{ product.title }}</h3>
@@ -62,7 +72,7 @@
           <span class="price">{{ formatPrice(product.price) }}</span>
         </div>
       </div>
-      
+
       <div class="card-actions">
         <button class="btn btn-primary">Ver Detalles</button>
         <button class="btn btn-secondary">Agregar al Carrito</button>
@@ -72,10 +82,7 @@
 
   <!-- Botón Cargar Más -->
   <div *ngIf="!loading && !error && canLoadMore()" class="load-more-container">
-    <button 
-      (click)="loadMoreProducts()" 
-      class="btn btn-load-more"
-      [disabled]="loadingMore">
+    <button (click)="loadMoreProducts()" class="btn btn-load-more" [disabled]="loadingMore">
       <span *ngIf="!loadingMore">Cargar Más</span>
       <span *ngIf="loadingMore">Cargando...</span>
     </button>
