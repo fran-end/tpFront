@@ -23,4 +23,12 @@ export class ApiService {
   public searchProducts(query: string): Observable<IProductResponse> {
     return this.http.get<IProductResponse>(`${this.url}/search?q=${query}`);
   }
+
+  public getCategories(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.url}/categories`);
+  }
+
+  public getProductsByCategory(category: string): Observable<IProductResponse> {
+    return this.http.get<IProductResponse>(`${this.url}/category/${category}`);
+  }
 }

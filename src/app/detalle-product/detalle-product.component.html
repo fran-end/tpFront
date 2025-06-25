@@ -1,0 +1,49 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- Barra promocional -->
+<div class="top-promo-bar">
+  <p>Envíos gratis a partir de $80.000</p>
+</div>
+
+<!-- Logo -->
+<a routerLink="/" class="logo-link">
+  <img src="Logo_Rari_Store.png" alt="Logo de la tienda" class="header-logo" routerLink="/products">
+</a>
+
+<!-- Header -->
+<div class="header-bar">
+  <div class="header-left">
+    <button routerLink="/products" class="home-button">
+      <i class="material-icons">arrow_back</i>
+    </button>
+    <h1 class="title">Rari Store</h1>
+  </div>
+
+  <div class="header-center">
+    <div class="search-box">
+      <input type="text" [(ngModel)]="searchTerm" (input)="onSearchInput()" (keyup.enter)="onSearch()"
+        placeholder="Buscar productos..." class="search-input">
+      <button (click)="onSearch()" class="search-btn">
+        <i class="material-icons">search</i>
+      </button>
+      <button (click)="clearSearch()" class="clear-btn" *ngIf="searchTerm">
+        <i class="material-icons">close</i>
+      </button>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <a routerLink="/products" class="logo-link">
+      <img src="Logo_Rari_Store.png" alt="Logo de la tienda" class="header-logo">
+    </a>
+  </div>
+</div>
+
+<div *ngIf="product" class="product-card">
+  <img [src]="product.thumbnail" [alt]="product.title" class="product-image">
+  <div class="product-details">
+    <h5 class="product-title">{{ product?.title }}</h5>
+    <h4 class="product-price">{{ product?.price | currency }}</h4>
+    <p class="product-description">{{ product?.description }}</p>
+  </div>
+</div>
