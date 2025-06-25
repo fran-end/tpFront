@@ -1,0 +1,15 @@
+<button routerLink="/" class="btn btn-home">Volver al inicio</button>
+
+<h2 class="wishlist-title">Mi lista de deseados</h2>
+
+<div *ngIf="wishlist.length === 0" class="wishlist-empty">
+  <p>No hay productos en la lista de deseados.</p>
+</div>
+
+<div *ngFor="let product of wishlist" class="wishlist-card">
+  <img [src]="product.thumbnail" alt="{{ product.title }}" class="wishlist-image" />
+
+  <h3 class="product-title">{{ product.title }}</h3>
+  <p class="price">{{ product.price | currency }}</p>
+  <button (click)="removeFromWishlist(product.id)" class="btn btn-remove">Eliminar</button>
+</div>

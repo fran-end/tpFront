@@ -1,0 +1,91 @@
+/* Título principal */
+.wishlist-title {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  margin: 30px 0 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Mensaje si la lista está vacía */
+.wishlist-empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+  margin: 40px auto;
+  background: #fff6df;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+/* Tarjeta de producto */
+.wishlist-card {
+  background: #ffffff;
+  border: 2px solid #8b8fa1;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 15px auto;
+  max-width: 400px; /* antes: 600px */
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+
+
+.wishlist-card:hover {
+  transform: translateY(-3px);
+}
+
+.product-title {
+  font-size: 1.1rem; 
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #234f80;
+  margin-bottom: 12px;
+}
+
+
+/* Botón de quitar */
+.btn-remove {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn-remove:hover {
+  background: #ba1e2c;
+}
+
+.btn-home {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 10px 25px;
+  border: 1px solid #dbb22a;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 20px auto;
+  display: block;
+  text-align: center;
+}
+
+.btn-home:hover {
+  background-color: #f6e2af;
+}

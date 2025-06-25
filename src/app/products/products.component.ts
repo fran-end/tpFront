@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { IProducts } from '../models/products';
 import { RouterModule } from '@angular/router';
+import { WishlistService } from '../services/wishlist.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-products',
@@ -28,11 +31,28 @@ export class ProductsComponent implements OnInit, OnDestroy {
   isSearching: boolean = false;
   private searchTimeout: any;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private wishlistService: WishlistService) {}
+
 
   ngOnInit(): void {
     this.loadProducts();
   }
+
+ addToWishlist(product: IProducts): void {
+  this.wishlistService.addToWishlist(product);
+
+  // Toast que no bloquea la pantalla
+  Swal.fire({
+    toast: true,
+    position: 'bottom-end',
+    icon: 'success',
+    title: `"${product.title}" agregado a deseados`,
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true
+  });
+}
+
 
   loadProducts(): void {
     this.loading = true;

@@ -16,10 +16,12 @@
 
 /* Logo */
 .logo-link {
-  position: fixed;
-  top: 20px;
+  position: absolute;
+  top: 30px;
   right: 20px;
   z-index: 1100;
+  display: flex;
+  gap: 15px;
 }
 .logo-link .header-logo {
   max-width: 80px;
@@ -197,6 +199,26 @@
   background: var(--blue-dark);
 }
 
+/*Ver lista deseados*/
+
+.verLista{
+  display: inline-block;
+  background-color: white;
+  color: #000000;
+  padding: 8px 16px;
+  border: 1px solid #dbb22a;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+a.verLista:hover {
+  background-color: #f6e2af;
+}
+
+
 /* Grid de productos */
 .products-grid {
   display: grid;
@@ -305,6 +327,22 @@
   color: rgb(45, 45, 45);
   transform: translateY(-2px);
 }
+
+/*Boton deseados*/
+.agregarDeseados {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.agregarDeseados:hover {
+  background-color: #dcdbd7; /
+}
+
+
 
 /* Botón Cargar Más */
 .load-more-container {

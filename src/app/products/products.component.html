@@ -46,6 +46,8 @@
     </div>
   </div>
 
+  <a routerLink="/deseados" class="verLista">Ver lista de deseados</a>
+
   <!-- Loading -->
   <div *ngIf="loading" class="loading">
     <div class="spinner"></div>
@@ -62,7 +64,9 @@
   <div *ngIf="!loading && !error" class="products-grid">
     <div *ngFor="let product of filteredProducts" class="product-card">
       <div class="image-container">
+        <button (click)="addToWishlist(product)" class="agregarDeseados">❤️ Agregar a deseados</button>
         <img [src]="product.thumbnail" [alt]="product.title" class="product-image">
+        
       </div>
 
       <div class="product-info">
